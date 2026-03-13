@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Past Events Filter Bar — past-filter-bar.css
+   BEM: .spk-filter / .spk-filter__* / .spk-filter__*--modifier
+   Colors:   var(--primary), var(--secondary), var(--tertiary), var(--secondary-ultra-dark)
+   Opacity:  color-mix(in srgb, ...)
+   Spacing:  var(--space-*)
+   Type:     var(--font-size-*)
+   Radius:   var(--radius-*)
+   ========================================================================== */
+
+/* ── Block ────────────────────────────────────────────────────────────────── */
+
+.spk-filter {
+    width: 100%;
+}
+
+/* Loading state — fades the block while navigating */
+.spk-filter[data-loading="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+    transition: opacity 0.15s;
+}
+
+/* ── Bar (sticky wrapper) ─────────────────────────────────────────────────── */
+
+.spk-filter__bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--neutral-ultra-light, #fff);
+    border-bottom: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
+    padding-block: var(--space-m, 1.25rem) var(--space-s, 1rem);
+    margin-bottom: var(--space-xl, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs, 0.65rem);
+}
+
+/* ── Dropdowns row ────────────────────────────────────────────────────────── */
+
+.spk-filter__dropdowns {
+    display: flex;
+    gap: var(--space-2xs, 0.4rem);
+    flex-wrap: wrap;
+}
+
+/* ── Select ───────────────────────────────────────────────────────────────── */
+/* Bare reset only — style select.spk-filter__select in your global/ACSS CSS  */
+
+select.spk-filter__select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ── Status row ───────────────────────────────────────────────────────────── */
+
+.spk-filter__status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs, 0.65rem);
+    flex-wrap: wrap;
+    min-height: 1.75rem;
+}
+
+/* ── Pills ────────────────────────────────────────────────────────────────── */
+/* Style .spk-filter__pill, .spk-filter__pill-remove in your global/ACSS CSS  */
+
+/* ── Clear all ────────────────────────────────────────────────────────────── */
+/* Style .spk-filter__clear-all in your global/ACSS CSS                        */
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .spk-filter__dropdowns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .spk-filter__status-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2xs, 0.4rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .spk-filter__dropdowns {
+        grid-template-columns: 1fr;
+    }
+
+    .spk-filter__bar {
+        /* Un-stick on very small screens to avoid eating too much viewport */
+        position: relative;
+    }
+}
+
+/* Bricks outputs .brx-query-trail markers inside every query loop.
+   Its own CSS only hides them within .brxe-posts; custom loop elements
+   (e.g. <ul> inner loops) need this explicit rule. */
+.brx-query-trail {
+    display: none !important;
+}
