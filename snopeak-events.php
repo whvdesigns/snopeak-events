@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('SNOPEAK_EVENTS_VERSION', '1.3.56');
+define('SNOPEAK_EVENTS_VERSION', '1.3.71');
 define('SNOPEAK_EVENTS_PATH', plugin_dir_path(__FILE__));
 define('SNOPEAK_EVENTS_URL', plugin_dir_url(__FILE__));
 
