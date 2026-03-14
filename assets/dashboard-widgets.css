@@ -1,0 +1,170 @@
+/* ==========================================================================
+   SnoPeak Dashboard Widgets
+   Note: ACSS variables are not available in wp-admin — all values use
+   explicit fallbacks so styling works without the frontend stylesheet.
+   ========================================================================== */
+
+/* --- Summary table -------------------------------------------------------- */
+
+.spk-widget-summary {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.spk-widget-summary tr + tr td {
+    border-top: 1px solid #f0f0f0;
+}
+
+.spk-widget-summary td {
+    padding: 6px 0;
+    font-size: 13px;
+}
+
+.spk-widget-summary .spk-summary-label {
+    color: #555;
+}
+
+.spk-widget-summary .spk-summary-value {
+    font-weight: 700;
+    text-align: right;
+    font-size: 15px;
+    color: #1e6fa8;
+}
+
+/* --- Event list ----------------------------------------------------------- */
+
+.spk-widget-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.spk-widget-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+}
+
+.spk-widget-list li:last-child {
+    border-bottom: none;
+}
+
+.spk-widget-list .spk-event-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
+}
+
+.spk-widget-list .spk-event-title {
+    font-weight: 600;
+    color: #1d2327;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.spk-widget-list .spk-event-meta {
+    font-size: 11px;
+    color: #999;
+}
+
+/* --- Badges --------------------------------------------------------------- */
+
+.spk-event-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.spk-event-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    background: #e8f0fe;
+    color: #1a56db;
+    line-height: 1.6;
+}
+
+.spk-event-badge.spk-event-badge--tentative {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.spk-event-badge.spk-event-badge--tbc {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.spk-event-badge.spk-event-badge--featured {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+/* --- Edit button ---------------------------------------------------------- */
+
+.spk-edit-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none !important;
+    border: 1px solid #1e6fa8;
+    color: #1e6fa8 !important;
+    background: #f0f7fc;
+    transition: background .15s, color .15s;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+.spk-edit-btn:hover,
+.spk-edit-btn:focus {
+    background: #1e6fa8;
+    color: #fff !important;
+    border-color: #1e6fa8;
+    outline: none;
+}
+
+/* --- Section headings (TBC widget) --------------------------------------- */
+
+.spk-widget-section-label {
+    margin: 0 0 5px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+}
+
+.spk-widget-section-label + .spk-widget-list {
+    margin-bottom: 14px;
+}
+
+/* --- Empty / success states ---------------------------------------------- */
+
+.spk-widget-empty {
+    color: #999;
+    font-size: 13px;
+    margin: 0;
+}
+
+.spk-widget-success {
+    color: #166534;
+    font-size: 13px;
+    margin: 0;
+}
