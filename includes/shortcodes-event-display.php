@@ -178,6 +178,9 @@ function spk_timing_bar_shortcode() {
     </style>';
     }
 
+    // Tell LiteSpeed Cache not to cache pages where the timing bar renders
+    do_action( 'litespeed_tag_add_private', 'spk_timing' );
+
     return $style . '<div class="event-timing-bar" data-timing="' . esc_attr($state) . '">'
            . esc_html($label)
            . '</div>';

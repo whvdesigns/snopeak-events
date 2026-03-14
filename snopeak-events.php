@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SnoPeak Events
  * Description: Custom events guide system for SnoPeak – integrates with ACF and Bricks Builder, compatible with UiPress for admin UI.
- * Version: 1.3.56
+ * Version: 1.3.57
  * Author: We Have Victory
  * Requires PHP: 7.4
  */
