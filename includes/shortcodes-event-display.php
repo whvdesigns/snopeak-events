@@ -173,8 +173,8 @@ function spk_timing_bar_shortcode() {
         border-radius: var(--radius-s) var(--radius-s) 0 0;
     }
     .event-timing-bar[data-timing="today"]       { background: var(--timing-success); }
-    .event-timing-bar[data-timing="startingsoon"]{ background: var(--timing-warning); }
-    .event-timing-bar[data-timing="nextweekend"] { background: var(--timing-info); }
+    .event-timing-bar[data-timing="startingsoon"]{ background: var(--timing-info); }
+    .event-timing-bar[data-timing="nextweekend"] { background: var(--timing-warning); }
     </style>';
     }
 

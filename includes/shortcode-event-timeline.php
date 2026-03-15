@@ -78,6 +78,9 @@ function spk_event_timeline_shortcode() {
 
     </div>
     <?php
+    // Tell LiteSpeed Cache not to cache pages where the timeline renders
+    do_action( 'litespeed_tag_add_private', 'spk_timing' );
+
     return ob_get_clean();
 }
 add_shortcode('spk_event_timeline', 'spk_event_timeline_shortcode');
@@ -245,16 +248,16 @@ function spk_event_timeline_styles() {
     .spk-event-timeline[data-state="ongoing"] .spk-timeline-progress,
     .spk-event-timeline[data-state="ongoing"] .spk-timeline-dot { background: var(--timeline-ongoing); }
     .spk-event-timeline[data-state="ongoing"] .spk-timeline-label { color: var(--timeline-ongoing); }
-    .spk-event-timeline[data-state="starting-soon"] { border-color: var(--warning, #f59e0b); box-shadow: 0 0 0 4px rgba(245,158,11,0.15), 0 8px 16px rgba(245,158,11,0.2); background: var(--warning-ultra-light); }
-    .spk-event-timeline[data-state="starting-soon"] .spk-timeline-bar { background: var(--warning-light, rgba(245,158,11,0.15)); }
+    .spk-event-timeline[data-state="starting-soon"] { border-color: var(--info, #eab308); box-shadow: 0 0 0 4px rgba(234,179,8,0.15), 0 8px 16px rgba(234,179,8,0.2); background: var(--info-ultra-light); }
+    .spk-event-timeline[data-state="starting-soon"] .spk-timeline-bar { background: var(--info-light, rgba(234,179,8,0.15)); }
     .spk-event-timeline[data-state="starting-soon"] .spk-timeline-progress,
-    .spk-event-timeline[data-state="starting-soon"] .spk-timeline-dot { background: var(--warning, #f59e0b); }
-    .spk-event-timeline[data-state="starting-soon"] .spk-timeline-label { color: var(--warning, #f59e0b); }
-    .spk-event-timeline[data-state="next-weekend"] { border-color: var(--info, #eab308); box-shadow: 0 0 0 4px rgba(234,179,8,0.15), 0 8px 16px rgba(234,179,8,0.2); background: var(--info-ultra-light); }
-    .spk-event-timeline[data-state="next-weekend"] .spk-timeline-bar { background: var(--info-light, rgba(234,179,8,0.15)); }
+    .spk-event-timeline[data-state="starting-soon"] .spk-timeline-dot { background: var(--info, #eab308); }
+    .spk-event-timeline[data-state="starting-soon"] .spk-timeline-label { color: var(--info, #eab308); }
+    .spk-event-timeline[data-state="next-weekend"] { border-color: var(--warning, #f59e0b); box-shadow: 0 0 0 4px rgba(245,158,11,0.15), 0 8px 16px rgba(245,158,11,0.2); background: var(--warning-ultra-light); }
+    .spk-event-timeline[data-state="next-weekend"] .spk-timeline-bar { background: var(--warning-light, rgba(245,158,11,0.15)); }
     .spk-event-timeline[data-state="next-weekend"] .spk-timeline-progress,
-    .spk-event-timeline[data-state="next-weekend"] .spk-timeline-dot { background: var(--info, #eab308); }
-    .spk-event-timeline[data-state="next-weekend"] .spk-timeline-label { color: var(--info, #eab308); }
+    .spk-event-timeline[data-state="next-weekend"] .spk-timeline-dot { background: var(--warning, #f59e0b); }
+    .spk-event-timeline[data-state="next-weekend"] .spk-timeline-label { color: var(--warning, #f59e0b); }
     .spk-event-timeline[data-state="cancelled"] { border-color: var(--timeline-cancelled); background: var(--danger-ultra-light); }
     .spk-event-timeline[data-state="cancelled"] .spk-timeline-bar { background: var(--danger-light, rgba(239,68,68,0.15)); }
     .spk-event-timeline[data-state="cancelled"] .spk-timeline-progress,
@@ -288,8 +291,8 @@ function spk_event_timeline_styles() {
     }
     .spk-event-timeline[data-state="upcoming"] .spk-timeline-dot { animation: pulse-upcoming 2.5s ease-in-out infinite; }
     .spk-event-timeline[data-state="ongoing"] .spk-timeline-dot { animation: pulse-success 2s ease-in-out infinite; }
-    .spk-event-timeline[data-state="starting-soon"] .spk-timeline-dot { animation: pulse-warning 2.5s ease-in-out infinite; }
-    .spk-event-timeline[data-state="next-weekend"] .spk-timeline-dot { animation: pulse-info 2.5s ease-in-out infinite; }
+    .spk-event-timeline[data-state="starting-soon"] .spk-timeline-dot { animation: pulse-info 2.5s ease-in-out infinite; }
+    .spk-event-timeline[data-state="next-weekend"] .spk-timeline-dot { animation: pulse-warning 2.5s ease-in-out infinite; }
     </style>
     <?php
 }
