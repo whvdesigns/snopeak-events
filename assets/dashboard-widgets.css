@@ -4,31 +4,67 @@
    explicit fallbacks so styling works without the frontend stylesheet.
    ========================================================================== */
 
-/* --- Summary table -------------------------------------------------------- */
+/* --- Summary card grid --------------------------------------------------- */
 
-.spk-widget-summary {
-    width: 100%;
-    border-collapse: collapse;
+.spk-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
 }
 
-.spk-widget-summary tr + tr td {
-    border-top: 1px solid #f0f0f0;
+.spk-summary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f6f9fc;
+    border: 1px solid #e2ecf5;
+    border-radius: 6px;
+    padding: 10px 12px;
 }
 
-.spk-widget-summary td {
-    padding: 6px 0;
-    font-size: 13px;
-}
-
-.spk-widget-summary .spk-summary-label {
-    color: #555;
-}
-
-.spk-widget-summary .spk-summary-value {
+.spk-summary-card-count {
+    font-size: 22px;
     font-weight: 700;
-    text-align: right;
-    font-size: 15px;
     color: #1e6fa8;
+    line-height: 1.1;
+}
+
+.spk-summary-card-label {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+/* --- Quick Actions -------------------------------------------------------- */
+
+.spk-quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.spk-action-btn {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none !important;
+    border: 1px solid #1e6fa8;
+    color: #1e6fa8 !important;
+    background: #f0f7fc;
+    transition: background .15s, color .15s;
+    text-align: center;
+}
+
+.spk-action-btn:hover,
+.spk-action-btn:focus {
+    background: #1e6fa8;
+    color: #fff !important;
+    border-color: #1e6fa8;
+    outline: none;
 }
 
 /* --- Event list ----------------------------------------------------------- */
@@ -140,7 +176,7 @@
     outline: none;
 }
 
-/* --- Section headings (TBC widget) --------------------------------------- */
+/* --- Section headings ---------------------------------------------------- */
 
 .spk-widget-section-label {
     margin: 0 0 5px;

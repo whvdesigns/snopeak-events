@@ -45,6 +45,11 @@ function spk_register_dashboard_widgets() {
         'spk_widget_summary_cb'
     );
     wp_add_dashboard_widget(
+        'spk_widget_quick_actions',
+        '⚡ Quick Actions',
+        'spk_widget_quick_actions_cb'
+    );
+    wp_add_dashboard_widget(
         'spk_widget_attending',
         '🎽 Events I\'m Attending',
         'spk_widget_attending_cb'
@@ -128,29 +133,51 @@ function spk_widget_summary_cb() {
     $locations  = (int) wp_count_posts( 'location' )->publish;
     $sponsors   = (int) wp_count_posts( 'event-sponsor' )->publish;
     $categories = (int) wp_count_terms( [ 'taxonomy' => 'event-category', 'hide_empty' => false ] );
+    $years      = (int) gmdate( 'Y' ) - 1997;
 
     $rows = [
-        [ 'Upcoming Events', $upcoming    ],
-        [ 'Past Events',     $past        ],
-        [ 'Total Events',    $total       ],
-        [ 'Organisers',      $organisers  ],
-        [ 'Locations',       $locations   ],
-        [ 'Event Types',     $categories  ],
-        [ 'Sponsors',        $sponsors    ],
+        [ 'Upcoming Events', $upcoming   ],
+        [ 'Past Events',     $past       ],
+        [ 'Total Events',    $total      ],
+        [ 'Organisers',      $organisers ],
+        [ 'Locations',       $locations  ],
+        [ 'Event Types',     $categories ],
+        [ 'Sponsors',        $sponsors   ],
+        [ 'Years Online',    $years      ],
     ];
 
-    echo '<table class="spk-widget-summary">';
+    echo '<div class="spk-summary-grid">';
     foreach ( $rows as [ $label, $count ] ) {
-        echo '<tr>';
-        echo '<td class="spk-summary-label">' . esc_html( $label ) . '</td>';
-        echo '<td class="spk-summary-value">' . (int) $count . '</td>';
-        echo '</tr>';
+        echo '<div class="spk-summary-card">';
+        echo '<span class="spk-summary-card-count">' . (int) $count . '</span>';
+        echo '<span class="spk-summary-card-label">' . esc_html( $label ) . '</span>';
+        echo '</div>';
     }
-    echo '</table>';
+    echo '</div>';
 }
 
 // ---------------------------------------------------------------------------
-// 2. Events I'm Attending
+// 2. Quick Actions
+// ---------------------------------------------------------------------------
+
+function spk_widget_quick_actions_cb() {
+    $actions = [
+        [ 'Add Event',      admin_url( 'post-new.php?post_type=event' )           ],
+        [ 'Add Organiser',  admin_url( 'post-new.php?post_type=event-organiser' ) ],
+        [ 'Add Location',   admin_url( 'post-new.php?post_type=location' )        ],
+        [ 'Add Sponsor',    admin_url( 'post-new.php?post_type=event-sponsor' )   ],
+        [ 'Add Event Type', admin_url( 'edit-tags.php?taxonomy=event-category' )  ],
+    ];
+
+    echo '<div class="spk-quick-actions">';
+    foreach ( $actions as [ $label, $url ] ) {
+        echo '<a href="' . esc_url( $url ) . '" class="spk-action-btn">' . esc_html( $label ) . '</a>';
+    }
+    echo '</div>';
+}
+
+// ---------------------------------------------------------------------------
+// 3. Events I'm Attending
 // ---------------------------------------------------------------------------
 
 function spk_widget_attending_cb() {
