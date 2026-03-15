@@ -1,0 +1,7 @@
+.spk-add-to-calendar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	align-items: center;
+	justify-content: center;
+}
