@@ -25,22 +25,29 @@ class Event_Location_Organisers_Shortcode {
 	 * @return string HTML output.
 	 */
 	public static function render() {
-		if ( ! is_singular( 'location' ) ) {
+		// Bricks returns the template ID from get_the_ID() — parse from URL instead.
+		$path  = trim( wp_unslash( parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) ), '/' );
+		$parts = explode( '/', $path );
+		$idx   = array_search( 'location', $parts );
+
+		if ( false === $idx || ! isset( $parts[ $idx + 1 ] ) ) {
 			return '';
 		}
 
-		$location_id   = absint( get_the_ID() );
+		$loc_post    = get_page_by_path( sanitize_title( $parts[ $idx + 1 ] ), OBJECT, 'location' );
+		$location_id = $loc_post ? (int) $loc_post->ID : 0;
+
+		if ( ! $location_id ) {
+			return '';
+		}
+
 		$organiser_ids = spk_get_organiser_ids_for_location( $location_id );
 
 		if ( empty( $organiser_ids ) ) {
 			return '<p>No organisers found for this location.</p>';
 		}
 
-		// Sort alphabetically by title
-		usort( $organiser_ids, function ( $a, $b ) {
-			return strcasecmp( get_the_title( $a ), get_the_title( $b ) );
-		} );
-
+		// Organiser IDs are already ordered by event frequency (most common first).
 		$output = '<ul class="spk-location-organisers">';
 
 		foreach ( $organiser_ids as $org_id ) {
